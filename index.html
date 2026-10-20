@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eee9f8">
+  <meta name="description" content="a cozy digital pet with a soft spot for you.">
+  <title>please don't delete me.exe</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="desktop">
+    <section class="game-window" id="game-window" aria-label="please don't delete me.exe game">
+      <header class="window-bar">
+        <div class="window-brand">
+          <span class="app-icon" aria-hidden="true">♡</span>
+          <span>please don't delete me.exe</span>
+        </div>
+        <button class="icon-button settings-trigger" id="settings-button" type="button" aria-label="open settings" title="settings">⚙</button>
+      </header>
+
+      <div class="window-content">
+        <div class="game-heading">
+          <div>
+            <p class="eyebrow">your corner of the internet</p>
+            <h1>please don't delete me.exe</h1>
+          </div>
+          <div class="presence"><span class="presence-dot"></span><span id="presence-label">here with you</span></div>
+        </div>
+
+        <section class="world-navigation" aria-label="current location">
+          <div class="location-indicator">
+            <span class="location-icon" id="location-icon" aria-hidden="true">⌂</span>
+            <div><strong id="current-room">living room</strong><span id="room-description">let's spend some time together.</span></div>
+          </div>
+          <button class="secondary-button places-button" id="places-button" type="button">places</button>
+        </section>
+
+        <section class="needs-panel" aria-label="pet needs">
+          <div class="need">
+            <div class="need-label"><span aria-hidden="true">♡</span><span>fullness</span><span class="need-value" id="hunger-value">72%</span></div>
+            <div class="meter"><div class="meter-fill fullness-fill" id="hunger-meter"></div></div>
+          </div>
+          <div class="need">
+            <div class="need-label"><span aria-hidden="true">✿</span><span>happiness</span><span class="need-value" id="happiness-value">76%</span></div>
+            <div class="meter"><div class="meter-fill happiness-fill" id="happiness-meter"></div></div>
+          </div>
+          <div class="need">
+            <div class="need-label"><span aria-hidden="true">☾</span><span>energy</span><span class="need-value" id="energy-value">82%</span></div>
+            <div class="meter" role="progressbar" aria-label="energy" aria-valuemin="0" aria-valuemax="100" aria-valuenow="82"><div class="meter-fill energy-fill" id="energy-meter"></div></div>
+          </div>
+        </section>
+
+        <section class="pet-stage" id="pet-stage" aria-label="your digital pet">
+          <div class="room-art" id="room-art">
+            <div class="room-scene scene-bedroom">
+              <div class="bedroom-window room-piece"><span class="window-sky"></span></div>
+              <div class="bedroom-picture room-piece"></div>
+              <div class="bedroom-wardrobe room-piece"></div>
+              <div class="bedroom-bed room-piece"><span class="bed-headboard"></span><span class="bed-pillows"></span><span class="bed-duvet"></span></div>
+              <div class="bedroom-rug room-piece"></div>
+              <div class="bedroom-nightstand room-piece"><span class="nightstand-lamp"></span><span class="nightstand-books"></span></div>
+              <div class="bedroom-clock room-piece"></div>
+              <div class="bedroom-basket room-piece"></div>
+              <div class="bedroom-plant room-piece"></div>
+            </div>
+            <div class="room-scene scene-kitchen">
+              <div class="kitchen-window room-piece"></div>
+              <div class="kitchen-cabinets room-piece"></div>
+              <div class="kitchen-shelf room-piece"><span></span><span></span><span></span></div>
+              <div class="kitchen-fridge room-piece"><span class="fridge-handle"></span><span class="fridge-note"></span></div>
+              <div class="kitchen-counter room-piece"><span class="kitchen-sink"></span><span class="kitchen-stove"></span></div>
+              <div class="kitchen-table room-piece"><span class="table-bowl"></span><span class="table-leg"></span></div>
+              <div class="kitchen-chair room-piece"></div>
+              <div class="kitchen-utensils room-piece"></div>
+              <div class="kitchen-table-setting room-piece"></div>
+              <div class="kitchen-plant room-piece"></div>
+            </div>
+            <div class="room-scene scene-living">
+              <div class="living-window room-piece"></div>
+              <div class="living-art room-piece"></div>
+              <div class="living-bookshelf room-piece"><span></span><span></span><span></span></div>
+              <div class="living-lamp room-piece"></div>
+              <div class="living-rug room-piece"></div>
+              <div class="living-sofa room-piece"><span class="sofa-cushion"></span><span class="sofa-throw"></span></div>
+              <div class="living-side-table room-piece"><span></span></div>
+              <div class="living-table room-piece"><span class="coffee-book"></span><span class="coffee-mug"></span></div>
+              <div class="living-plant room-piece"></div>
+            </div>
+            <div class="room-scene scene-park">
+              <div class="park-sun room-piece"></div>
+              <div class="park-cloud park-cloud-one room-piece"></div>
+              <div class="park-cloud park-cloud-two room-piece"></div>
+              <div class="park-hill park-hill-back room-piece"></div>
+              <div class="park-tree park-tree-left room-piece"></div>
+              <div class="park-tree park-tree-right room-piece"></div>
+              <div class="park-pond room-piece"></div>
+              <div class="park-path room-piece"></div>
+              <div class="park-bench room-piece"></div>
+              <div class="park-bush park-bush-left room-piece"></div>
+              <div class="park-bush park-bush-right room-piece"></div>
+              <div class="park-flower-bed room-piece"></div>
+              <div class="park-butterfly room-piece"></div>
+            </div>
+          </div>
+          <div class="speech-bubble" id="speech-bubble" role="status" aria-live="polite">oh! you came to see me.</div>
+          <div class="sleep-effects" id="sleep-effects" aria-hidden="true"><span>z</span><span>✧</span><span>z</span></div>
+          <button class="pet-button" id="pet-creature" type="button" aria-label="pet your creature">
+            <svg class="creature" id="creature" viewBox="0 0 180 170" role="img" aria-label="a curious lavender creature">
+              <g class="sprite">
+                <path class="ear ear-left" d="M40 54 30 20 63 41" />
+                <path class="ear ear-right" d="M140 54l10-34-33 21" />
+                <path class="body" d="M32 73Q32 48 58 46L69 31Q76 24 82 34L90 42 99 34Q107 24 113 32L122 47Q148 52 148 77L145 126Q143 143 126 146L55 146Q36 143 34 125Z" />
+                <path class="ear-inner" d="M40 45 36 30 52 41ZM140 45l4-15-16 11Z" />
+                <path class="belly" d="M58 112Q88 97 121 112L119 137 59 137Z" />
+                <path class="body-highlight" d="M49 65Q53 52 67 51M112 52q13 4 18 17" />
+                <path class="forehead-heart" d="M87 61q-5-5-8 0t11 10q14-10 7-14-5-2-10 4Z" />
+                <g class="expression expression-default">
+                  <ellipse class="eye" cx="66" cy="80" rx="6" ry="8"/><ellipse class="eye" cx="114" cy="80" rx="6" ry="8"/>
+                  <circle class="eye-shine" cx="68" cy="77" r="2.1"/><circle class="eye-shine" cx="116" cy="77" r="2.1"/>
+                  <circle class="blush" cx="52" cy="94" r="4"/><circle class="blush" cx="128" cy="94" r="4"/>
+                  <path class="mouth" d="M81 96Q90 106 99 96"/>
+                </g>
+                <g class="expression expression-happy">
+                  <path class="eye-line" d="M59 81q7-8 14 0M107 81q7-8 14 0"/><path class="mouth" d="M79 94Q90 111 101 94"/>
+                  <circle class="blush" cx="52" cy="94" r="5"/><circle class="blush" cx="128" cy="94" r="5"/>
+                </g>
+                <g class="expression expression-sleepy">
+                  <path class="eye-line" d="M59 84q7-3 14 0M107 84q7-3 14 0"/><path class="mouth" d="M84 99q6-3 12 0"/>
+                  <circle class="blush" cx="52" cy="94" r="4"/><circle class="blush" cx="128" cy="94" r="4"/>
+                  <text class="zzz" x="127" y="57">z</text>
+                </g>
+                <g class="expression expression-hungry">
+                  <circle class="eye" cx="66" cy="81" r="5"/><circle class="eye" cx="114" cy="81" r="5"/>
+                  <path class="mouth" d="M84 100q6-8 12 0q-6 10-12 0"/><path class="brow" d="m58 70 12 3m49-3-12 3"/>
+                </g>
+                <g class="expression expression-sad">
+                  <path class="eye" d="M61 82q5-6 10 0"/><path class="eye" d="M109 82q5-6 10 0"/>
+                  <path class="mouth" d="M80 104q10-12 20 0"/><path class="tear" d="M64 89q-5 8 0 11q5-3 0-11"/>
+                </g>
+                <g class="expression expression-curious">
+                  <ellipse class="eye" cx="66" cy="80" rx="6.5" ry="8"/><ellipse class="eye" cx="114" cy="80" rx="6.5" ry="8"/>
+                  <circle class="eye-shine" cx="68" cy="77" r="2.2"/><circle class="eye-shine" cx="116" cy="77" r="2.2"/>
+                  <path class="mouth" d="M83 97q7 7 14 0"/><path class="brow" d="m59 69 13-2"/>
+                  <circle class="blush" cx="52" cy="94" r="4.5"/><circle class="blush" cx="128" cy="94" r="4.5"/>
+                </g>
+                <g class="expression expression-reaction expression-react-happy">
+                  <path class="eye-line" d="M59 81q7-8 14 0M107 81q7-8 14 0"/><path class="mouth" d="M79 94Q90 111 101 94"/>
+                  <circle class="blush" cx="52" cy="94" r="5"/><circle class="blush" cx="128" cy="94" r="5"/>
+                </g>
+                <g class="expression expression-reaction expression-react-shy">
+                  <path class="eye-line" d="M59 83q7 4 14 0M107 83q7 4 14 0"/><path class="mouth" d="M84 98q6 5 12 0"/>
+                  <circle class="blush" cx="52" cy="94" r="6"/><circle class="blush" cx="128" cy="94" r="6"/>
+                </g>
+                <g class="expression expression-reaction expression-react-playful">
+                  <circle class="eye" cx="66" cy="81" r="6"/><path class="eye-line" d="M107 82q7-7 14 0"/>
+                  <path class="mouth" d="M80 96q10 9 20-1"/><path class="brow" d="m58 69 13 2"/>
+                </g>
+                <g class="expression expression-reaction expression-react-surprised">
+                  <circle class="eye" cx="66" cy="80" r="6"/><circle class="eye" cx="114" cy="80" r="6"/>
+                  <circle class="mouth" cx="90" cy="100" r="5"/><path class="brow" d="m58 68 14-2m50 2-14-2"/>
+                </g>
+                <g class="expression expression-reaction expression-react-grumpy">
+                  <circle class="eye" cx="66" cy="82" r="5"/><circle class="eye" cx="114" cy="82" r="5"/>
+                  <path class="mouth" d="M81 104q9-8 18 0"/><path class="brow" d="m58 69 14 5m50-5-14 5"/>
+                </g>
+                <g class="expression expression-reaction expression-react-proud">
+                  <path class="eye-line" d="M59 81q7-7 14 0M107 81q7-7 14 0"/><path class="mouth" d="M81 96q9 8 18 0"/>
+                  <path class="brow" d="m58 69 13-2m51 2-13-2"/><circle class="blush" cx="52" cy="94" r="4"/><circle class="blush" cx="128" cy="94" r="4"/>
+                </g>
+                <g class="expression expression-glitching">
+                  <path class="eye" d="M59 81h14m34 0h14"/><path class="mouth" d="m82 99 7-5 5 7 7-5"/>
+                </g>
+                <g class="reaction-blush" aria-hidden="true">
+                  <circle cx="51" cy="95" r="5"/><circle cx="129" cy="95" r="5"/>
+                </g>
+                <path class="foot" d="M50 143v8h25v-6m30 6v-8h25v8"/>
+                <path class="cheek-mark" d="M43 111h8m78 0h8"/>
+              </g>
+            </svg>
+            <span class="pet-hint">tap me</span>
+          </button>
+          <div class="stage-floor" aria-hidden="true"></div>
+          <div class="sparkle-layer" id="sparkle-layer" aria-hidden="true"></div>
+        </section>
+
+        <div class="pet-status">
+          <div class="pet-identity"><span class="identity-heart" aria-hidden="true">♥</span><span id="creature-name">miso</span></div>
+          <span class="mood-pill" id="mood-label"><span class="mood-dot"></span>curious</span>
+        </div>
+
+        <div class="action-row" aria-label="creature actions">
+          <button class="action-button feed-action" id="feed-button" type="button"><span aria-hidden="true">♡</span> feed</button>
+          <button class="action-button play-action" id="play-button" type="button"><span aria-hidden="true">✦</span> play</button>
+          <button class="action-button pet-action" id="pet-button" type="button"><span aria-hidden="true">✿</span> pet</button>
+          <button class="action-button talk-action" id="talk-button" type="button"><span aria-hidden="true">…</span> talk</button>
+        </div>
+        <button class="sleep-button" id="sleep-button" type="button"><span aria-hidden="true">♡</span> sleep <span class="sleep-caption" id="sleep-caption">take a soft rest</span></button>
+
+        <aside class="checkin-invite" id="checkin-invite" hidden>
+          <p>hey, how have you been feeling lately? ♡</p>
+          <div>
+            <button class="text-button" id="checkin-open" type="button">tell me, if you want</button>
+            <button class="text-button" id="checkin-dismiss" type="button">not now</button>
+          </div>
+        </aside>
+
+        <div class="lower-row">
+          <button class="journal-link" id="journal-button" type="button"><span aria-hidden="true">▤</span> memory book <span class="journal-count" id="journal-count">0 / 5 chapters</span></button>
+          <div class="secret-status" id="secret-status" aria-live="polite"><span aria-hidden="true">✧</span><span id="secret-text">secrets found: 0 / 3</span></div>
+          <div class="keyboard-hint"><kbd>1</kbd> feed <kbd>2</kbd> play <kbd>3</kbd> pet <kbd>4</kbd> talk <kbd>5</kbd> sleep</div>
+        </div>
+
+        <section class="world-panel" aria-label="shared moments and room activities">
+          <div class="world-stat-row">
+            <div class="coin-counter"><span aria-hidden="true">✦</span><span>coins</span><strong id="coin-balance">30</strong></div>
+            <div class="moment-counter"><span>moments shared</span><strong id="moment-total">0</strong></div>
+          </div>
+          <p class="chapter-progress" id="chapter-progress">your story is just beginning.</p>
+          <p class="daily-suggestion" id="daily-suggestion"></p>
+          <div class="room-shortcut" id="room-shortcut" hidden><span id="room-shortcut-text"></span><button type="button" id="room-shortcut-button">go there</button></div>
+          <div class="room-activities" id="room-activities" aria-label="activities in this room"></div>
+          <button class="more-moments-button" id="more-moments-button" type="button" hidden>more moments</button>
+          <button class="arcade-button" id="arcade-button" type="button">✦ play minigames</button>
+          <section class="kitchen-panel" id="kitchen-panel" hidden aria-label="kitchen pantry and shop">
+            <h3>pantry &amp; shop</h3>
+            <p class="pantry-note">buy a snack with coins, then choose it below to feed your friend.</p>
+            <div class="shop-items" id="shop-items"></div>
+            <h4>your pantry</h4>
+            <div class="inventory-items" id="inventory-items"></div>
+            <p class="inventory-empty" id="inventory-empty">your pantry is empty. choose a treat from the shop above.</p>
+          </section>
+        </section>
+
+        <section class="settings-panel" id="settings-panel" hidden aria-label="settings">
+          <div class="settings-heading"><span>settings</span><button id="close-settings" type="button" class="text-button">close</button></div>
+          <div class="settings-section">
+            <h3>appearance</h3>
+            <div class="theme-options" role="group" aria-label="color theme">
+              <button class="theme-choice" id="light-theme-button" type="button" aria-pressed="true">☀ light mode</button>
+              <button class="theme-choice" id="dark-theme-button" type="button" aria-pressed="false">☾ dark mode</button>
+            </div>
+            <button id="appearance-button" class="text-button" type="button">change pet appearance</button>
+          </div>
+          <div class="settings-section">
+            <h3>audio</h3>
+            <label class="audio-toggle" for="music-toggle"><span>background music</span><input id="music-toggle" type="checkbox"><span class="toggle-track" aria-hidden="true"></span></label>
+            <label class="volume-setting" for="music-volume"><span>music volume</span><input id="music-volume" type="range" min="0" max="100" step="1"><output id="music-volume-value" for="music-volume">12%</output></label>
+            <label class="audio-toggle" for="sound-toggle"><span>sound effects</span><input id="sound-toggle" type="checkbox"><span class="toggle-track" aria-hidden="true"></span></label>
+            <label class="volume-setting" for="effects-volume"><span>effect volume</span><input id="effects-volume" type="range" min="0" max="100" step="1"><output id="effects-volume-value" for="effects-volume">30%</output></label>
+          </div>
+          <div class="settings-section">
+            <h3>game preferences</h3>
+            <button id="ending-button" class="text-button ending-button" type="button" hidden>peek at the ending</button>
+            <button id="reset-button" class="text-button reset-button" type="button">start over</button>
+          </div>
+          <div class="settings-section">
+            <h3>your memories</h3>
+            <div class="storage-tools">
+              <button id="export-button" class="text-button" type="button">export my memories</button>
+              <button id="import-button" class="text-button" type="button">import my memories</button>
+              <input id="import-file" type="file" accept="application/json,.json" hidden>
+            </div>
+            <p class="save-note">your save stays in this browser on this device. clearing browser data or switching devices can make it unavailable. export a backup to keep a copy.</p>
+            <p class="save-confirmation" id="settings-save-status" role="status" aria-live="polite"></p>
+          </div>
+          <div class="settings-section feedback-section">
+            <h3>send feedback</h3>
+            <p>have a thought, found a bug, or just want to say hello? i'd love to hear from you. ♡</p>
+            <label for="feedback-category">what would you like to share?</label>
+            <select id="feedback-category">
+              <option value="suggest an idea">suggest an idea</option>
+              <option value="report a bug">report a bug</option>
+              <option value="share your thoughts">share your thoughts</option>
+              <option value="just say hello">just say hello</option>
+            </select>
+            <label for="feedback-message">your message</label>
+            <textarea id="feedback-message" rows="3" maxlength="1000" placeholder="write a note if you'd like..."></textarea>
+            <p>feedback is not sent from the game. contact the creator on instagram and send your note there.</p>
+            <a class="instagram-link" href="https://www.instagram.com/vonliezt/" target="_blank" rel="noopener noreferrer">♡ contact the creator · @vonliezt</a>
+            <div class="feedback-actions">
+              <button id="copy-instagram-button" class="text-button" type="button">copy instagram handle</button>
+              <button id="copy-feedback-button" class="text-button" type="button">copy feedback to share</button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="secret-found-banner" id="secret-found-banner" role="status" aria-live="polite" hidden>
+          <strong id="secret-found-title"></strong>
+          <span id="secret-found-copy"></span>
+        </aside>
+        <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+        <div class="screen-reader-only" id="save-announcement" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <footer>
+      <button class="creator-note-trigger" id="creator-note-trigger" type="button" aria-haspopup="dialog" aria-controls="creator-note-dialog">
+        <span>a note from the creator</span><span class="creator-note-icon" aria-hidden="true">＋</span>
+      </button>
+    </footer>
+  </main>
+
+  <dialog class="game-dialog creator-note-dialog" id="creator-note-dialog" aria-labelledby="creator-note-title">
+    <div class="creator-note-content">
+      <h2 id="creator-note-title">creator's note</h2>
+      <p>meow! thank you so much for playing my game. this game is currently still in beta and it's my first time making a game, so i'm still learning as i go. there might be some bugs, mistakes or unfinished features along the way, but i'll do my best to fix them and keep improving the game. i'll update it whenever i find something that needs fixing or something that could be better. thank you for being here and for being part of this journey. i hope you enjoy playing as much as i enjoyed creating it!</p>
+      <button class="primary-button" id="close-creator-note" type="button">close</button>
+    </div>
+  </dialog>
+
+  <dialog class="game-dialog" id="welcome-dialog" aria-labelledby="welcome-title">
+    <div id="adoption-name-step">
+      <p class="eyebrow">a new friend</p>
+      <h2 id="welcome-title">someone is waiting here.</h2>
+      <p>what should we call them?</p>
+      <label class="screen-reader-only" for="name-input">your pet's name</label>
+      <input id="name-input" name="name" maxlength="18" autocomplete="off" placeholder="miso">
+      <div class="player-name-field" id="player-name-field">
+        <label class="screen-reader-only" for="player-name-input">your name, if you'd like to share it</label>
+        <input id="player-name-input" name="player-name" maxlength="18" autocomplete="given-name" placeholder="what should i call you?">
+      </div>
+      <button class="primary-button" id="name-next" type="button">choose a color</button>
+      <p class="dialog-footnote">pick any name that feels right.</p>
+      <button class="text-button restore-backup-button" id="welcome-import-button" type="button">restore a backup</button>
+      <p class="import-feedback" id="welcome-import-feedback" role="status" aria-live="polite" hidden></p>
+      <input id="welcome-import-file" type="file" accept="application/json,.json" hidden>
+    </div>
+    <div id="adoption-color-step" hidden>
+      <p class="eyebrow">make this home yours</p>
+      <h2>choose a color</h2>
+      <p>each shade has a place in this world.</p>
+      <div class="color-options" id="color-options" role="group" aria-label="pet color"></div>
+      <div class="adoption-preview color-step-preview" aria-label="color preview">
+        <svg class="creature color-preview" id="color-preview-creature" viewBox="0 0 180 170" aria-hidden="true">
+          <g class="sprite">
+            <path class="ear" d="M40 54 30 20 63 41M140 54l10-34-33 21" />
+            <path class="body" d="M32 73Q32 48 58 46L69 31Q76 24 82 34L90 42 99 34Q107 24 113 32L122 47Q148 52 148 77L145 126Q143 143 126 146L55 146Q36 143 34 125Z" />
+            <path class="belly" d="M58 112Q88 97 121 112L119 137 59 137Z" />
+            <ellipse class="eye" cx="66" cy="81" rx="5" ry="7"/><ellipse class="eye" cx="114" cy="81" rx="5" ry="7"/>
+            <path class="mouth" d="M82 97Q90 104 98 97"/>
+            <path class="foot" d="M50 143v8h25v-6m30 6v-8h25v8"/>
+          </g>
+        </svg>
+      </div>
+      <button class="primary-button" id="color-next" type="button">meet your pet</button>
+      <button class="text-button adoption-back" id="name-back" type="button">back to name</button>
+    </div>
+    <div id="adoption-preview-step" hidden>
+      <p class="eyebrow">ready to come home</p>
+      <h2>meet <span id="preview-name">miso</span></h2>
+      <p><span id="preview-color-name">lavender dream</span> looks lovely on them.</p>
+      <div class="adoption-preview" id="adoption-preview" aria-hidden="true">
+        <svg class="creature color-preview" id="preview-creature" viewBox="0 0 180 170">
+          <g class="sprite">
+            <path class="ear" d="M40 54 30 20 63 41M140 54l10-34-33 21" />
+            <path class="body" d="M32 73Q32 48 58 46L69 31Q76 24 82 34L90 42 99 34Q107 24 113 32L122 47Q148 52 148 77L145 126Q143 143 126 146L55 146Q36 143 34 125Z" />
+            <path class="belly" d="M58 112Q88 97 121 112L119 137 59 137Z" />
+            <ellipse class="eye" cx="66" cy="81" rx="5" ry="7"/><ellipse class="eye" cx="114" cy="81" rx="5" ry="7"/>
+            <path class="mouth" d="M82 97Q90 104 98 97"/>
+            <path class="foot" d="M50 143v8h25v-6m30 6v-8h25v8"/>
+          </g>
+        </svg>
+      </div>
+      <button class="primary-button" id="adopt-button" type="button">♡ meet your companion</button>
+      <button class="text-button adoption-back" id="color-back" type="button">choose another color</button>
+    </div>
+  </dialog>
+
+  <dialog class="game-dialog tutorial-dialog" id="tutorial-dialog" aria-labelledby="tutorial-title">
+    <div class="tutorial-content">
+      <p class="eyebrow">a warm first hello</p>
+      <h2 id="tutorial-title">i think we're going to get along.</h2>
+      <p>oh... you found me. ♡ we can visit four cozy places, share moments, play games for coins, and find snacks in the kitchen.</p>
+      <ul>
+        <li><strong>places:</strong> choose the bedroom, kitchen, living room, or park.</li>
+        <li><strong>kitchen:</strong> earn coins in games, buy food, then choose a pantry item to feed.</li>
+        <li><strong>moments:</strong> share different activities to open new story chapters.</li>
+        <li><strong>sleep:</strong> visit the bedroom whenever your friend needs rest.</li>
+      </ul>
+      <div class="dialog-actions tutorial-actions">
+        <button class="text-button" id="skip-tutorial" type="button">skip for now</button>
+        <button class="primary-button" id="finish-tutorial" type="button">got it, let's play</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="game-dialog minigame-dialog" id="minigame-dialog" aria-labelledby="minigame-title">
+    <div class="minigame-content">
+      <button class="dialog-close" id="close-minigame" type="button" aria-label="close game">×</button>
+      <p class="eyebrow">a game for two</p>
+      <h2 id="minigame-title">choose a game</h2>
+      <p class="minigame-limit-note">each game has five plays every two hours. the cooldown begins when a round starts.</p>
+      <div class="minigame-choices" id="minigame-choices" role="group" aria-label="choose a minigame">
+        <button type="button" data-minigame="stars"><span aria-hidden="true">✦</span><strong>catch the falling stars</strong><small>20 seconds · up to 6 coins</small><small data-play-limit></small></button>
+        <button type="button" data-minigame="memory"><span aria-hidden="true">▧</span><strong>memory match</strong><small>find four pairs · up to 8 coins</small><small data-play-limit></small></button>
+        <button type="button" data-minigame="garden"><span aria-hidden="true">✿</span><strong>garden gathering</strong><small>collect eight blooms · up to 8 coins</small><small data-play-limit></small></button>
+      </div>
+      <section class="minigame-play" id="minigame-play" hidden>
+        <p id="minigame-instructions"></p>
+        <div class="minigame-board" id="minigame-board" hidden>
+          <span class="game-count" id="game-count">0 · 20 sec</span>
+          <div class="star-field" id="star-field"></div>
+        </div>
+        <div class="memory-board" id="memory-board" hidden></div>
+        <div class="garden-board" id="garden-board" hidden></div>
+        <p class="game-message" id="game-message" aria-live="polite">ready when you are.</p>
+        <p class="minigame-limit-status" id="minigame-limit-status" aria-live="polite"></p>
+        <button class="secondary-button" id="start-game" type="button">start round</button>
+        <button class="text-button minigame-back" id="minigame-back" type="button">choose another game</button>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog class="game-dialog activity-scene-dialog" id="activity-scene-dialog" aria-labelledby="activity-scene-title">
+    <div class="activity-scene-content">
+      <button class="dialog-close" id="close-activity-scene" type="button" aria-label="close activity">×</button>
+      <p class="eyebrow">a moment together</p>
+      <h2 id="activity-scene-title"></h2>
+      <p id="activity-scene-prompt"></p>
+      <div class="activity-scene-choices" id="activity-scene-choices"></div>
+    </div>
+  </dialog>
+
+  <dialog class="game-dialog checkin-dialog" id="checkin-dialog" aria-labelledby="checkin-title">
+    <div class="checkin-content">
+      <button class="dialog-close" id="close-checkin" type="button" aria-label="close check-in">×</button>
+      <p class="eyebrow">a moment to share</p>
+      <h2 id="checkin-title">how are you feeling?</h2>
+      <p class="checkin-prompt" id="checkin-opener">you can tell me as much as you like, or skip it. your note is not saved.</p>
+      <div class="checkin-thread" id="checkin-thread" aria-live="polite" aria-label="conversation"></div>
+      <form id="checkin-form">
+        <label class="screen-reader-only" for="checkin-input">your message for your pet</label>
+        <textarea id="checkin-input" rows="3" maxlength="500" autocomplete="off" placeholder="write a note if you want..."></textarea>
+        <p class="checkin-response" id="checkin-response" role="status" aria-live="polite"></p>
+        <div class="checkin-choices" id="checkin-choices" hidden></div>
+        <div class="dialog-actions">
+          <button class="text-button" id="checkin-skip" type="button">close for now</button>
+          <button class="primary-button checkin-send" id="checkin-send" type="submit">send</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog class="game-dialog places-dialog" id="places-dialog" aria-labelledby="places-title">
+    <div class="places-content">
+      <button class="dialog-close" id="close-places" type="button" aria-label="close places">×</button>
+      <p class="eyebrow">the world is waiting</p>
+      <h2 id="places-title">where shall we go?</h2>
+      <div class="place-options" id="place-options"></div>
+    </div>
+  </dialog>
+
+  <dialog class="game-dialog journal-dialog" id="journal-dialog" aria-labelledby="journal-title">
+    <div class="journal-shell">
+      <button class="dialog-close" id="close-journal" type="button" aria-label="close memory book">×</button>
+      <section id="journal-list-view">
+        <p class="eyebrow">your shared history</p>
+        <h2 id="journal-title">memory book</h2>
+        <p class="journal-progress" id="journal-progress">chapter 1 of 5 · 0 secrets found</p>
+        <div class="journal-section">
+          <h3>chapters</h3>
+          <div class="journal-entries" id="chapter-entries"></div>
+        </div>
+        <div class="journal-section">
+          <h3>memories</h3>
+          <div class="journal-entries" id="secret-entries"></div>
+        </div>
+        <div class="journal-section secret-hint-section">
+          <h3>secret hints</h3>
+          <p class="secret-hint-intro">secrets are tucked into familiar rooms. explore and spend time with your friend to uncover them.</p>
+          <div class="secret-hints" id="secret-hints"></div>
+        </div>
+        <div class="journal-section">
+          <h3>things we found</h3>
+          <div class="journal-entries" id="discovery-entries"></div>
+        </div>
+        <div class="journal-section">
+          <h3>places we've found</h3>
+          <div class="journal-entries" id="place-memory-entries"></div>
+        </div>
+        <p class="journal-hint" id="journal-hint"></p>
+      </section>
+      <section class="journal-reader" id="journal-reader" hidden>
+        <button class="text-button journal-back" id="journal-back" type="button">← memory book</button>
+        <p class="eyebrow" id="reader-eyebrow">a saved story</p>
+        <h2 id="reader-title"></h2>
+        <div class="reader-copy" id="reader-copy"></div>
+        <p class="reader-dialogue" id="reader-dialogue"></p>
+        <button class="primary-button" id="complete-chapter" type="button" hidden>keep this chapter</button>
+        <p class="reader-status" id="reader-status"></p>
+      </section>
+    </div>
+  </dialog>
+
+  <dialog class="game-dialog confirm-dialog" id="confirm-dialog" aria-labelledby="confirm-title">
+    <form method="dialog" id="confirm-form">
+      <p class="eyebrow">a quiet pause</p>
+      <h2 id="confirm-title">start a new story?</h2>
+      <p>this will erase this browser's save. your friend will say goodbye.</p>
+      <div class="dialog-actions">
+        <button class="secondary-button" value="cancel">stay together</button>
+        <button class="danger-button" id="confirm-reset" value="reset">start over</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="game-dialog ending-dialog" id="ending-dialog" aria-labelledby="ending-title">
+    <form method="dialog">
+      <p class="eyebrow">a note from the quiet place</p>
+      <h2 id="ending-title">you made a home here.</h2>
+      <p id="ending-copy">i used to think the quiet meant i was forgotten. now i know someone can leave a warm light behind, even when the screen goes dark.</p>
+      <p class="ending-signoff">thank you for staying, <span id="ending-name">friend</span>.</p>
+      <button class="primary-button" value="close">keep this moment</button>
+    </form>
+  </dialog>
+
+  <dialog class="game-dialog import-confirm-dialog" id="import-confirm-dialog" aria-labelledby="import-confirm-title">
+    <form method="dialog" id="import-confirm-form">
+      <p class="eyebrow">a saved story</p>
+      <h2 id="import-confirm-title">replace this save?</h2>
+      <p>this will replace the progress in this browser with the selected backup.</p>
+      <div class="dialog-actions">
+        <button class="secondary-button" value="cancel">keep current save</button>
+        <button class="primary-button" id="confirm-import" value="import">import backup</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>
